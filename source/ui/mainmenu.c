@@ -52,7 +52,13 @@ static void mainmenu_update(ui_view* view, void* data, linked_list* items, list_
         networkinstall_open();
     }
 
+    if(hidKeysDown() & KEY_X) {
+        qrinstall_open();
+    }
+
     if(linked_list_size(items) == 0) {
+        linked_list_add(items, &qr_code_install);
+        linked_list_add(items, &network_install);
         linked_list_add(items, &sd);
         linked_list_add(items, &ctr_nand);
         linked_list_add(items, &twl_nand);
@@ -64,12 +70,10 @@ static void mainmenu_update(ui_view* view, void* data, linked_list* items, list_
         linked_list_add(items, &tickets);
         linked_list_add(items, &ext_save_data);
         linked_list_add(items, &system_save_data);
-        linked_list_add(items, &network_install);
-        linked_list_add(items, &qr_code_install);
         linked_list_add(items, &update);
     }
 }
 
 void mainmenu_open() {
-    list_display("Main Menu", "A: Select, Y: Net Install, START: Exit", NULL, mainmenu_update, mainmenu_draw_top);
+    list_display("Main Menu", "A: Select, Y: Net, X: QR, START: Exit", NULL, mainmenu_update, mainmenu_draw_top);
 }
