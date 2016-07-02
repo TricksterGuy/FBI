@@ -75,5 +75,5 @@ static void mainmenu_update(ui_view* view, void* data, linked_list* items, list_
 }
 
 void mainmenu_open() {
-    list_display("Main Menu", "A: Select, Y: Net, X: QR, START: Exit", NULL, mainmenu_update, mainmenu_draw_top);
+    list_display("Main Menu", ": Select, : Net, : QR, START: Exit", NULL, mainmenu_update, mainmenu_draw_top);
 }
